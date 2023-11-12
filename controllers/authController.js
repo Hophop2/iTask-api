@@ -3,8 +3,6 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const login = async (req, res) => {
-  const isLocalhost = req.hostname === "localhost";
-  const domain = isLocalhost ? "localhost" : "https://itask-api.onrender.com";
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -48,7 +46,7 @@ const login = async (req, res) => {
     secure: true, //https
     sameSite: "None", //cross-site cookie
     maxAge: 7 * 24 * 60 * 60 * 1000,
-    domain: domain,
+    domain: "https://itask-api.onrender.com",
   });
 
   res.json({ accessToken });
