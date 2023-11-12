@@ -28,7 +28,7 @@ const login = async (req, res) => {
       },
     },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "15m" }
+    { expiresIn: "7d" }
   );
 
   const refreshToken = jwt.sign(
@@ -46,7 +46,7 @@ const login = async (req, res) => {
     secure: true, //https
     sameSite: "None", //cross-site cookie
     maxAge: 7 * 24 * 60 * 60 * 1000,
-    domain: "https://itask-api.onrender.com",
+    domain: "itask-api.onrender.com",
   });
 
   res.json({ accessToken });
